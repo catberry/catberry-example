@@ -1,0 +1,34 @@
+{
+	"name": "catberry-example",
+	"version": "1.0.0",
+	"description": "Example Application based on Catberry Framework",
+	"main": "./server.js",
+	"browser": {
+		"./config/environment.json": "./config/browser.json"
+	},
+	"author": "Catberry",
+	"license": "MIT",
+	"dependencies": {
+		"catberry": "github:catberry/catberry#develop",
+		"catberry-handlebars": "github:catberry/catberry-handlebars#develop",
+		"catberry-uhr": "github:catberry/catberry-uhr#develop",
+		"catberry-logger": "^1.0.0",
+		"express": "^4.13.4",
+		"serve-static": "^1.10.2",
+		"errorhandler": "^1.4.3"
+	},
+	"devDependencies": {
+		"eslint": "^2.2.0"
+	},
+	"engines": {
+		"node": ">=4"
+	},
+	"scripts": {
+		"start": "npm run release",
+		"release": "node ./build.js release && node ./server.js release",
+		"test": "./node_modules/.bin/eslint ./",
+		"lint-fix": "./node_modules/.bin/eslint ./ --fix",
+		"debug": "node ./build.js & node ./server.js",
+		"debug-win": "powershell -Command \"Start-Process -NoNewWindow node ./build.js; Start-Process -NoNewWindow -Wait node ./server.js\""
+	}
+}
