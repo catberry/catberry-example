@@ -1,8 +1,8 @@
 {{#each commits}}
-	<a id="{{sha}}" href="#" class="list-group-item js-commit">
+	<a href="#" class="list-group-item js-commit" data-id="{{sha}}">
 		{{commit.message}} ({{commit.author.name}})
 	</a>
   {{#if isShowingDetails}}
-    <cat-commits-details id="commit-details-{{commit.sha}}" cat-store="commits/Details"></cat-commits-details>
+    <cat-commits-details cat-store="commits/Details"></cat-commits-details>
   {{/if}}
 {{/each}}

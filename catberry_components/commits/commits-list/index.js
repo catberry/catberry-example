@@ -28,11 +28,7 @@ class CommitsList {
 	 */
 	render() {
 		return this.$context.getStoreData()
-			.then(commits => {
-				return {
-					commits
-				};
-			});
+			.then(commits => ({commits}));
 	}
 
 	/**
@@ -102,7 +98,7 @@ class CommitsList {
 		const commitElement = event.currentTarget;
 
 		return this.$context.sendAction('show-details', {
-			id: commitElement.getAttribute('id')
+			id: commitElement.getAttribute('data-id')
 		});
 	}
 }
