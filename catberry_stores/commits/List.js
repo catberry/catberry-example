@@ -33,6 +33,13 @@ class List {
 		this._currentPage = 1;
 
 		/**
+		 * Current pages of feed.
+		 * @type {number}
+		 * @private
+		 */
+		this._isPageChanged = true;
+
+		/**
 		 * Current state of feed loading.
 		 * @type {boolean}
 		 * @private
@@ -51,6 +58,12 @@ class List {
 	 * @returns {Promise<Object>|Object|null|undefined} Loaded data.
 	 */
 	load() {
+		if (!this._isPageChanged) {
+			this._markCurrentDetails();
+			return this._currentFeed;
+		}
+		this._isPageChanged = false;
+
 		let currentPage = this._currentPage;
 		let currentLimit = PER_PAGE;
 
@@ -58,6 +71,7 @@ class List {
 		if (this._currentPage === 2 && this.$context.isBrowser) {
 			currentPage = 1;
 			currentLimit *= 2;
+			this._currentFeed = [];
 		}
 
 		return this.getItems(currentPage, currentLimit)
@@ -71,9 +85,7 @@ class List {
 				return this._currentFeed;
 			})
 			.then(feed => {
-				feed.forEach(item => {
-					item.isShowingDetails = (item.sha === this.$context.state.detailsId);
-				});
+				this._markCurrentDetails();
 				return feed;
 			});
 	}
@@ -117,7 +129,18 @@ class List {
 			return;
 		}
 		this._currentPage++;
+		this._isPageChanged = true;
 		this.$context.changed();
+	}
+
+	/**
+	 * Marks a commit that should display details.
+	 * @private
+	 */
+	_markCurrentDetails() {
+		this._currentFeed.forEach(item => {
+			item.isShowingDetails = (item.sha === this.$context.state.detailsId);
+		});
 	}
 }
 
