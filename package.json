@@ -1,6 +1,6 @@
 {
 	"name": "catberry-example",
-	"version": "1.0.0",
+	"version": "1.1.0",
 	"description": "Example Application based on Catberry Framework",
 	"main": "./server.js",
 	"browser": {
@@ -9,7 +9,7 @@
 	"author": "Catberry",
 	"license": "MIT",
 	"dependencies": {
-		"catberry": "^8.0.0",
+		"catberry": "^8.1.0",
 		"catberry-handlebars": "^3.0.1",
 		"catberry-uhr": "^5.0.0",
 		"catberry-logger": "^1.0.0",
