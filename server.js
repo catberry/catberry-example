@@ -6,7 +6,7 @@ const path = require('path');
 // configuration
 const config = require('./config/environment.json');
 const isRelease = process.argv.length === 3 ?	process.argv[2] === 'release' : undefined;
-config.publicPath = path.join(__dirname, 'public');
+config.publicDirectoryPath = path.join(__dirname, 'public');
 config.server.port = config.server.port || 3000;
 config.isRelease = isRelease === undefined ? config.isRelease : isRelease;
 
@@ -33,7 +33,7 @@ const express = require('express');
 const app = express();
 
 const serveStatic = require('serve-static');
-app.use(serveStatic(config.publicPath));
+app.use(serveStatic(config.publicDirectoryPath));
 
 app.use(cat.getMiddleware()); // Catberry app as a middleware
 
