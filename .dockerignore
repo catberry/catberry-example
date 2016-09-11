@@ -1,0 +1,10 @@
+public/bundle.js
+node_modules
+*.md
+Dockerfile
+*~
+.*
+*.log
+ehthumbs.db
+Thumbs.db
+__BrowserBundle.js
