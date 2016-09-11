@@ -7,7 +7,7 @@ const path = require('path');
 const config = require('./config/environment.json');
 const isRelease = process.argv.length === 3 ?	process.argv[2] === 'release' : undefined;
 config.publicDirectoryPath = path.join(__dirname, 'public');
-config.server.port = config.server.port || 3000;
+config.server.port = process.env.CAT_PORT || config.server.port || 3000;
 config.isRelease = isRelease === undefined ? config.isRelease : isRelease;
 
 // catberry application
