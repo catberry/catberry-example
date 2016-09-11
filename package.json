@@ -24,8 +24,9 @@
 		"node": ">=4"
 	},
 	"scripts": {
-		"start": "npm run release",
-		"release": "node ./build.js release && node ./server.js release",
+		"start": "npm run build-release && npm run release",
+		"release": "node ./server.js release",
+		"build-release": "node ./build.js release",
 		"test": "./node_modules/.bin/eslint ./",
 		"lint-fix": "./node_modules/.bin/eslint ./ --fix",
 		"debug": "node ./build.js & node ./server.js",
