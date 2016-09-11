@@ -4,7 +4,7 @@
 
 ## How to use
 This is a simple web-application that works with [GitHub API](http://developer.github.com/)
-and demonstrates how to build isomorphic web-application using 
+and demonstrates how to build isomorphic web-application using
 [Catberry Framework](https://github.com/catberry/catberry).
 
 First of all, it is needed to install dependencies:
@@ -23,6 +23,18 @@ To start in `release` mode:
 
 ```
 npm start
+```
+
+Also, you can build a Docker image:
+
+```bash
+docker build -t catberry/catberry-example .
+```
+
+And run it as a container:
+
+```bash
+docker run -it -p 3000:3000 -e CAT_PORT='3000' catberry/catberry-example
 ```
 
 ## Contributing
