@@ -32,6 +32,12 @@ uhrPlugin.register(cat.locator);
 const express = require('express');
 const app = express();
 
+const compression = require('compression');
+const zlib = require('zlib');
+app.use(compression({
+	flush: zlib.Z_PARTIAL_FLUSH
+}));
+
 const serveStatic = require('serve-static');
 app.use(serveStatic(config.publicDirectoryPath));
 
