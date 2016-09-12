@@ -31,7 +31,7 @@ class Search {
 		if (!query) {
 			return {};
 		}
-		return this._uhr.get(`https://api.github.com/search/code?q=${query}+in:file+repo:catberry/catberry`)
+		return this._uhr.get(`https://api.github.com/search/code?q=${encodeURIComponent(query)}+in:file+repo:catberry/catberry`)
 			.then(result => {
 				if (result.status.code >= 400 && result.status.code < 600) {
 					throw new Error(result.status.text);
@@ -48,7 +48,7 @@ class Search {
 	 * @returns {Promise<Object>|Object|null|undefined} Response to component.
 	 */
 	handleFind(args) {
-		return this.$context.redirect(`/search?query=${args.query}`);
+		return this.$context.redirect(`/search?query=${encodeURIComponent(args.query)}`);
 	}
 }
 
