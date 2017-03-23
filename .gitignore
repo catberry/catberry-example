@@ -1,8 +1,10 @@
 # Catberry files
 .idea
-__BrowserBundle.js
+.appDefinitions.js
 node_modules
-public/bundle.js
+public/externals.js
+public/app.js
+npm-debug.log
 # if you don't need any assets from public directory then uncomment this:
 # public
 
