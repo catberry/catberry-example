@@ -7,35 +7,33 @@ This is a simple web-application that works with [GitHub API](http://developer.g
 and demonstrates how to build isomorphic web-application using
 [Catberry Framework](https://github.com/catberry/catberry).
 
-First of all, it is needed to install dependencies:
-
+To run in `release` mode:
 ```
-npm install -- production
-```
-
-Then to start in `debug` mode without script minification and with watching for changes:
-
-```
-npm run debug
+make run.local.release
 ```
 
-To start in `release` mode:
-
+To start in `debug` mode without script minification and with watching for changes:
 ```
-npm start
+make run.local.dev
 ```
 
 Also, you can build a Docker image:
 
 ```bash
-docker build -t catberry/catberry-example .
+make docker
 ```
 
 And run it as a container:
 
 ```bash
-docker run -it -p 3000:3000 -e CAT_PORT='3000' catberry/catberry-example
+docker run -it -p 3000:3000 catberry/catberry-example
 ```
+
+It's possible to pass following environment variables to adjust config settings:
+
+* `CAT_TITLE` - content of the title tag on the page
+* `CAT_PORT` - port to listen
+* `CAT_LOG_LEVEL` - logging level (see [catberry-logger](https://github.com/catberry/catberry-logger) package for more details)
 
 ## Contributing
 

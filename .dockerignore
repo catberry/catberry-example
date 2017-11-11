@@ -1,7 +1,8 @@
-public/bundle.js
-node_modules
-*.md
+browser.js
+build.js
+Makefile
 Dockerfile
+*.md
 *~
 .*
 *.log

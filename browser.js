@@ -1,12 +1,11 @@
 'use strict';
 
-// this config will be replaced by `./config/browser.json` when building
-// because of `browser` field in `package.json`
-const config = require('./config/environment.json');
-
 // catberry application
 const catberry = require('catberry');
-const cat = catberry.create(config);
+
+// config is assigned in the script included into HEAD component
+// see server.js and the HEAD component for more details
+const cat = catberry.create(window.$catConfig);
 
 // register Catberry plugins needed in a browser
 const templateEngine = require('catberry-handlebars');

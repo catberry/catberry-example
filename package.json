@@ -3,9 +3,6 @@
 	"version": "2.0.1",
 	"description": "Example Application based on Catberry Framework",
 	"main": "./server.js",
-	"browser": {
-		"./config/environment.json": "./config/browser.json"
-	},
 	"author": "Catberry",
 	"license": "MIT",
 	"dependencies": {
@@ -25,12 +22,8 @@
 		"node": ">=6.10.0"
 	},
 	"scripts": {
-		"start": "npm run build-release && npm run release",
-		"release": "node ./server.js release",
-		"build-release": "node ./build.js release",
+		"start": "node ./server.js release",
 		"test": "./node_modules/.bin/eslint ./",
-		"lint-fix": "./node_modules/.bin/eslint ./ --fix",
-		"debug": "node ./build.js & node ./server.js",
-		"debug-win": "powershell -Command \"Start-Process -NoNewWindow node ./build.js; Start-Process -NoNewWindow -Wait node ./server.js\""
+		"debug": "node ./server.js"
 	}
 }
