@@ -1,9 +1,0 @@
-{
-	"title": "Catberry Application",
-	"server": {
-		"port": 3000
-	},
-	"logger": {
-		"level": 30
-	}
-}
