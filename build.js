@@ -1,12 +1,16 @@
 'use strict';
 
 // configuration
-const isRelease = process.argv.length === 3 ?
-	process.argv[2] === 'release' : undefined;
+const config = {
+	isRelease: process.argv[2] === 'release',
+	logger: {
+		level: Number(process.env.CAT_LOG_LEVEL) || 30
+	}
+};
 
 // catberry application
 const catberry = require('catberry');
-const cat = catberry.create({isRelease});
+const cat = catberry.create(config);
 
 // register Catberry plugins needed for building process
 const templateEngine = require('catberry-handlebars');

@@ -4,11 +4,17 @@ const http = require('http');
 const path = require('path');
 
 // configuration
-const config = require('./config/environment.json');
-const isRelease = process.argv.length === 3 ?	process.argv[2] === 'release' : undefined;
-config.publicDirectoryPath = path.join(__dirname, 'public');
-config.server.port = process.env.CAT_PORT || config.server.port || 3000;
-config.isRelease = isRelease === undefined ? config.isRelease : isRelease;
+const config = {
+	title: process.env.CAT_TITLE || 'Catberry Application',
+	server: {
+		port: Number(process.env.CAT_PORT) || 3000
+	},
+	logger: {
+		level: Number(process.env.CAT_LOG_LEVEL) || 30
+	},
+	isRelease: process.argv[2] === 'release',
+	publicDirectoryPath: path.join(__dirname, 'public')
+};
 
 // catberry application
 const catberry = require('catberry');
@@ -40,6 +46,19 @@ app.use(compression({
 
 const serveStatic = require('serve-static');
 app.use(serveStatic(config.publicDirectoryPath));
+
+// serving client config
+// CREATE A SEPARATE OBJECT HERE AND COPY REQUIRED VALUES
+// FROM THE SERVER CONFIG EXCLUDING PRIVATE DATA IF NEEDED
+const clientConfig = {
+	title: config.title,
+	isRelease: config.isRelease,
+	logger: {
+		level: config.logger.level
+	}
+};
+const configResp = `window.$catConfig=${JSON.stringify(clientConfig)}`;
+app.get('/config.js', (req, res) => res.end(configResp));
 
 app.use(cat.getMiddleware()); // Catberry app as a middleware
 
