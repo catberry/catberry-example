@@ -7,7 +7,7 @@
 // /some/:parameter[store1,store2,store3]?queryParameter=:queryValue[store1,store2]
 //
 // More details here:
-// http://catberry.org/documentation#routing
+// https://github.com/catberry/catberry/blob/master/docs/index.md#routing
 
 module.exports = [
 	'/:page[Pages]',
