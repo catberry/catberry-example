@@ -1,5 +1,5 @@
 FROM node:alpine
-MAINTAINER Denis Rechkunov <denis.rechkunov@gmail.com>
+MAINTAINER Denis Rechkunov <denis@rdner.de>
 
 ENV APP_NAME catberry-example
 ENV APP_DEST ~/apps/${APP_NAME}
